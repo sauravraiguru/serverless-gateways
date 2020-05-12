@@ -103,9 +103,31 @@ This is the swagger which is provided for testing your API.
 
 ## 5. [Practice] with variables / parameters
 
+- [Prerequisite] Create a new action hello world action on NodeJS
+
+![Actions](images/actions.png)
 
 
+![Create Action](images/create-action.png)
 
+- Change the function `message` to parse the input parameters
+
+```console
+function main(msg) {
+	return { message: "Hello, you are " + msg.name + " from " + msg.place + " and you have received " + msg.material + " as your relief materials" };
+}
+
+```
+
+- Change the parameters accordingly in the `Invoke with parameters` and `Invoke` the function
+
+```console
+{
+    "name":"Saurav",
+    "place":"Bangalore",
+    "material":"Biscuits"
+}
+```
 
 ## 6. Additional lab
 
