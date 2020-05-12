@@ -14,6 +14,13 @@ Note: This service is available in Lite plan only.
 
 2. Let us create our first function on a NodeJS runtime.
 
-Go to -> https://cloud.ibm.com/functions/ and Click on `actions`
+A. Go to -> https://cloud.ibm.com/functions/ and Click on `actions`
 
 ![Actions](images/actions.png)
+
+B. lets create our first action as below and click on `Create`
+
+![Create Action](images/create-action.png)
+
+C. Lets try out if the action is working now,
+-> Go to `Endpoints` on the left bar 
