@@ -129,6 +129,6 @@ function main(msg) {
 }
 ```
 
-## 6. Additional lab
+## 6. Additional lab using API connect
 
 [create & manage APIs using API Connect](https://developer.ibm.com/tutorials/create-and-manage-apis-using-api-connect/)
