@@ -34,9 +34,43 @@ Alternatively you can also try web-action to check it. You will see `hello world
 
 ![curlcommand](images/curl.png)
 
-## 3. Exposing this as a secure API
+
+## 3 Enabling actions as a `trigger` [Optional]
+Click on `connected triggers` on the left bar and select `Add Trigger` to quickly create an event based trigger.
+
+![Trigger](images/triggers.png)
+
+There are many ways to trigger based on an event type, but we will choose a time-based `periodic` trigger
+
+![Periodic trigger](images/periodic.png)
+a. Provide a `trigger name` say `sample` a cron for every minute and click on `Create & Connect`
+
+![Trigger Config](images/create-trigger.png)
+
+Once create this trigger will be invoked every minute (as per the rule) and we can see the same in Function Dashboard
+[Functions Dashboard](https://cloud.ibm.com/functions/dashboard)
+
+
+## 4. Exposing this as a secure & manage API using API Gateways
+We need to now expose our actions as API and also secure them
+-> lets go to API gateways service which we have created already earlier.
+[API Management Service](https://cloud.ibm.com/functions/apimanagement)
+
+Click on 
+
+![Trigger Config](images/apimanagement.png)
 
 
 
 
-## 4. Practice with with variables / parameters.
+
+
+## 5. [Practice] with variables / parameters
+
+
+
+
+
+## 6. Additional lab
+
+[create & manage APIs using API Connect](https://developer.ibm.com/tutorials/create-and-manage-apis-using-api-connect/)
