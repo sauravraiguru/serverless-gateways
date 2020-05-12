@@ -14,15 +14,15 @@ Note: This service is available in Lite plan only.
 
 ## 2. Let us create our first function on a NodeJS runtime.
 
-A. Go to -> https://cloud.ibm.com/functions/ and Click on `actions`
+-  Go to -> https://cloud.ibm.com/functions/ and Click on `actions`
 
 ![Actions](images/actions.png)
 
-B. lets create our first action as below and click on `Create`
+-  lets create our first action as below and click on `Create`
 
 ![Create Action](images/create-action.png)
 
-C. Lets try out if the action is working now,
+-  Lets try out if the action is working now,
 -> Go to `Endpoints` on the left bar and copy the CURL command at bottom
 
 
@@ -56,13 +56,49 @@ We need to now expose our actions as API and also secure them
 -> lets go to API gateways service which we have created already earlier.
 [API Management Service](https://cloud.ibm.com/functions/apimanagement)
 
-Click on
+Click on `Create API`
 
 ![Trigger Config](images/apimanagement.png)
 
+Enter `API Name` say, `sample` and Click on `Create Operation`
+
+![Trigger Config](images/sampleapi.png)
+
+Provide a `Path` say `hello`, select the action `hello-world` you created earlier and Click on `Create`  
+
+![Trigger Config](images/operation.png)
+
+#### Securing the API Endpoint
+Once we have now created an API GET /hello we need to now secure it.
+
+- Toggle the `Require authentication via API Key`
 
 
+![enablekey](images/enablekey.png)
+- Scroll down and click on `Save`. It will take you to `Summary` page of the API.
+Wherein, we can see the API link, status etc.
+- Go to `Sharing & Keys` on the left and Click on `Create API Key`
 
+![Sharing](images/sharing.png)
+
+- Paste this label `X-IBM-Client-Id` and `Create` a Key
+Note: Keep a note of the `generated` API Key.
+
+![Create Key](images/create-key.png)
+
+Now lets try using the get /Hello API with the apikey
+- Go to `API Explorer` and click on `GET /hello` and `Try it`
+This is the swagger which is provided for testing your API.
+
+![Try It](images/try-it.png)
+
+- Paste the `X-IBM-Client-Id` Key value which was noted earlier and click on `Send`.
+
+![Client ID](images/clientId.png)
+
+- You should see a sample response below.
+
+![Response](images/response.png)
 
 
 ## 5. [Practice] with variables / parameters
