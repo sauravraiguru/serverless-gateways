@@ -51,12 +51,12 @@ Once create this trigger will be invoked every minute (as per the rule) and we c
 [Functions Dashboard](https://cloud.ibm.com/functions/dashboard)
 
 
-## 4. Exposing this as a secure & manage API using API Gateways
+## 4. Exposing this function as a secure API & manage it using API Gateways
 We need to now expose our actions as API and also secure them
 -> lets go to API gateways service which we have created already earlier.
 [API Management Service](https://cloud.ibm.com/functions/apimanagement)
 
-Click on 
+Click on
 
 ![Trigger Config](images/apimanagement.png)
 
