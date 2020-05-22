@@ -1,7 +1,7 @@
 # Serverless and API Gateways - Lab
 
 ###  Welcome to this serverless and Cloud API Gateways Lab.
-In Part A - we will be trying out `actions` , `triggers` and exposing & securing actions using `API gateways`
+In Part A - will cover trying out `actions` , `triggers` and exposing & securing actions using `API gateways`
 
 In Part B - we will be creating a function i.e action to classify images using visual recognition service and expose, secure it by using API gateway service.
 
@@ -10,6 +10,10 @@ In Part C - Additional lab using API connect
 ### Prerequisite:
 
 IBM Cloud Account - [IBM Cloud Registration](https://cloud.ibm.com/registration)
+
+Quick read on -
+Functions
+API Gateways
 
 # PART A - Getting started with FaaS & API Gateways
 
