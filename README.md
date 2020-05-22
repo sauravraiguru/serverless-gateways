@@ -7,7 +7,7 @@ In Part B - we will be creating a function i.e action to classify images using v
 
 In Part C - Additional lab using API connect
 
-### Prerequisite:
+## Prerequisite:
 
 IBM Cloud Account - [IBM Cloud Registration](https://cloud.ibm.com/registration)
 
