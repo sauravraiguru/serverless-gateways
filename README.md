@@ -129,6 +129,8 @@ function main(msg) {
 }
 ```
 
-## 6. Additional lab using API connect
+## 6. Classifying images from functions using Watson Visual Recognition [**Work In Progress**]
+
+## 7. Additional lab using API connect
 
 [create & manage APIs using API Connect](https://developer.ibm.com/tutorials/create-and-manage-apis-using-api-connect/)
