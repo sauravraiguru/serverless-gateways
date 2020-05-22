@@ -2,19 +2,24 @@
 
 ###  Welcome to this serverless and Cloud API Gateways Lab, where we will be trying out `actions` , `triggers` and exposing & securing actions using `API gateways`
 
+Prerequisite:
+
+IBM Cloud Account - [IBM Cloud Registration](https://cloud.ibm.com/registration)
+
+# PART A - Getting started with FaaS & API Gateways
 
 ## 1. Creating API Gateways service.
 
 Go to API Gateways service page on IBM Cloud and `Create` a service.
 
-https://cloud.ibm.com/catalog/services/api-gateway
+[API Gateway Service](https://cloud.ibm.com/catalog/services/api-gateway)
 
 Note: This service is available in Lite plan only.
 
 
 ## 2. Let us create our first function on a NodeJS runtime.
 
--  Go to -> https://cloud.ibm.com/functions/ and Click on `actions`
+-  Go to -> [IBM Cloud Functions](https://cloud.ibm.com/functions/) and Click on `actions`
 
 ![Actions](images/actions.png)
 
@@ -23,7 +28,8 @@ Note: This service is available in Lite plan only.
 ![Create Action](images/create-action.png)
 
 -  Lets try out if the action is working now,
--> Go to `Endpoints` on the left bar and copy the CURL command at bottom
+
+Go to `Endpoints` on the left bar and copy the CURL command at bottom
 
 
 ![Endpoints](images/endpoints.png)
@@ -82,7 +88,7 @@ Wherein, we can see the API link, status etc.
 ![Sharing](images/sharing.png)
 
 - Paste this label `X-IBM-Client-Id` and `Create` a Key
-Note: Keep a note of the `generated` API Key.
+Note: Keep a note of the `generated` Client ID Key.
 
 ![Create Key](images/create-key.png)
 
@@ -128,9 +134,121 @@ function main(msg) {
     "material":"Biscuits"
 }
 ```
+# PART B - Image classification using Functions
 
-## 6. Classifying images from functions using Watson Visual Recognition [**Work In Progress**]
+## 1. Classifying images from a function using Watson Visual Recognition
+1. Create a new python hello world runtime say, with a name `classify` and replace the code with below
 
-## 7. Additional lab using API connect
+```console
+
+from watson_developer_cloud import VisualRecognitionV3
+
+def main(params):
+    # init visual recognition library
+    apiKey = params['apiKey']
+    version = "2018-03-19"
+    visual_recognition = VisualRecognitionV3(version=version, iam_apikey=apiKey)
+
+    # get image url from params
+    image_url = params['imageUrl']
+
+    # parse visual recognition return data for our tags
+    tags = ""
+    classifiedImages = visual_recognition.classify(url=image_url).get_result()
+    image = classifiedImages['images'][0]
+    classes = image['classifiers'][0]['classes']
+    for theClass in classes:
+        currentTag = theClass['class']
+        print(currentTag)
+        tags = tags + currentTag + ", "
+    result = {'classes': tags}
+    return result
+```
+
+2.  Create a Visual Recognition service from here - [Visual Recognition Service](https://cloud.ibm.com/catalog/services/visual-recognition)
+
+Note: Once created you can go to `service credentials` section and make a note of the `apiKey`, which will be used to call the VR service.
+
+3. This action expects the `apiKey` to be passed in as a parameter, and lets do it.
+
+`Default parameters` can be set for an action, rather than passing the parameters into the action every time.
+This is a useful option for data that stays the same on every invocation. Let’s set the apiKey as one of our default parameters.
+
+Click `Parameters` in the left side menu, and then click `Add Parameter +`
+For parameter name, `apiKey`, with a capital K. For parameter value, insert your apiKey value enclosed in quotation marks. Click `Save`
+P.S the apiKey value can be obtained from Visual Recognition service.
+
+Note: Just for this test run add another parameter in the `Invoke with Parameters` and insert the below JSON parameter.
+
+```console
+{
+    "imageUrl":"https://raw.githubusercontent.com/beemarie/ow-vr/master/images/puppy.jpg"    
+}
+```
+You should see an output as below
+```console
+{
+  "classes": "puppy, dog, domestic animal, animal, Labrador retriever dog, retriever dog, golden retriever dog, pale yellow color, light brown color, "
+}
+```
+
+4. Now lets go to our [API Management Service](https://cloud.ibm.com/functions/apimanagement) and create an API & its gateway to access our image classification function.
+
+Click on `Create API`
+
+- Enter `API Name` say, `classify` and Click on `Create Operation`.
+
+![Trigger Config](images/api-info.png)
+
+- Provide a `Path` say `post-classify`,
+select the action `Classify`-> `POST` you created earlier and Click on `Create`
+
+![Trigger Config](images/api-operation.png)
+
+####   Securing the API Endpoint
+Once we have now created an API GET /hello we need to now secure it.
+
+- Toggle the `Require authentication via API Key`
+
+
+![enablekey](images/enablekey.png)
+- Scroll down and click on `Save`. It will take you to `Summary` page of the API.
+Wherein, we can see the API link, status etc.
+
+- Go to `Sharing & Keys` on the left and Click on `Create API Key`
+
+![Sharing](images/sharing.png)
+
+- Paste this label `X-IBM-Client-Id` and `Create` a Key
+
+Note: Keep a note of the `generated` Client ID Key.
+
+![Create Key](images/create-key.png)
+
+Now lets try using the `POST /classify` API with the Client ID Key
+
+- Go to `API Explorer` and click on `POST /classify` and `Try it`
+
+Note: This is the swagger which is provided for testing your API.
+
+![Try It](images/post-classify.png)
+
+- Paste the `X-IBM-Client-Id` Key value which was noted earlier
+- Also, paste imageUrl in the body parameter
+```console
+{
+    "imageUrl":"https://raw.githubusercontent.com/beemarie/ow-vr/master/images/puppy.jpg"    
+}
+```
+- Click on `Send`.
+
+- You should see a sample response having the image classification below.
+
+![Response](images/classify-response.png)
+
+
+# PART C - Additional lab using API connect
+
+### Managing your APIs throughout the API lifecycle
 
 [create & manage APIs using API Connect](https://developer.ibm.com/tutorials/create-and-manage-apis-using-api-connect/)
