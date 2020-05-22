@@ -12,8 +12,9 @@ In Part C - Additional lab using API connect
 IBM Cloud Account - [IBM Cloud Registration](https://cloud.ibm.com/registration)
 
 Quick read on -
-Functions
-API Gateways
+Functions / FaaS - [Functions](https://medium.com/@BoweiHan/an-introduction-to-serverless-and-faas-functions-as-a-service-fb5cec0417b2)
+
+API Management - [API Management](https://developer.ibm.com/apiconnect/2019/01/10/what-is-api-management/)
 
 # PART A - Getting started with FaaS & API Gateways
 
