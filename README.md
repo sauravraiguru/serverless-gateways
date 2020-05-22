@@ -1,8 +1,13 @@
 # Serverless and API Gateways - Lab
 
-###  Welcome to this serverless and Cloud API Gateways Lab, where we will be trying out `actions` , `triggers` and exposing & securing actions using `API gateways`
+###  Welcome to this serverless and Cloud API Gateways Lab.
+In Part A - we will be trying out `actions` , `triggers` and exposing & securing actions using `API gateways`
 
-Prerequisite:
+In Part B - we will be creating a function i.e action to classify images using visual recognition service and expose, secure it by using API gateway service.
+
+In Part C - Additional lab using API connect
+
+### Prerequisite:
 
 IBM Cloud Account - [IBM Cloud Registration](https://cloud.ibm.com/registration)
 
@@ -167,16 +172,22 @@ def main(params):
 
 2.  Create a Visual Recognition service from here - [Visual Recognition Service](https://cloud.ibm.com/catalog/services/visual-recognition)
 
-Note: Once created you can go to `service credentials` section and make a note of the `apiKey`, which will be used to call the VR service.
+Once created you can go to `service credentials` section and make a note of the `apiKey`, which will be used to call the VR service.
+
 
 3. This action expects the `apiKey` to be passed in as a parameter, and lets do it.
+
 
 `Default parameters` can be set for an action, rather than passing the parameters into the action every time.
 This is a useful option for data that stays the same on every invocation. Let’s set the apiKey as one of our default parameters.
 
 Click `Parameters` in the left side menu, and then click `Add Parameter +`
-For parameter name, `apiKey`, with a capital K. For parameter value, insert your apiKey value enclosed in quotation marks. Click `Save`
-P.S the apiKey value can be obtained from Visual Recognition service.
+For parameter name, `apiKey`, with a capital K. For parameter value, insert your apiKey value enclosed in quotation marks. Click `Save`.
+
+![API Key parameter](images/parameter.png)
+
+
+P.S the `apiKey` value can be obtained from Visual Recognition service.
 
 Note: Just for this test run add another parameter in the `Invoke with Parameters` and insert the below JSON parameter.
 
