@@ -16,6 +16,10 @@ Functions / FaaS - [Functions](https://medium.com/@BoweiHan/an-introduction-to-s
 
 API Management - [API Management](https://developer.ibm.com/apiconnect/2019/01/10/what-is-api-management/)
 
+## Estimated Time:
+
+You would need approximately 30 mins to complete the steps in this tutorial.
+
 # PART A - Getting started with FaaS & API Gateways
 
 ## 1. Creating API Gateways service.
