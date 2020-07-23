@@ -152,15 +152,22 @@ function main(msg) {
 
 ## 1. Classifying images from a function using Watson Visual Recognition
 
-### Objective 
-In this tutorial, we will be using IBM creating a function i.e action to classify images using visual recognition service and expose, secure it by using API gateway service.
+### Objective
+In this tutorial, we will be using IBM Functions (which is a serverless offering on IBM Cloud based on OpenWhisk) to create an action to classify images using IBM Visual Recognition service and expose, secure the function by leveraging API Gateway service.
+
+The objective as part of this tutorial is to able to quickly create a function to do a particular task i.e classifying images and expose it as an standard API service in a secure way, that can be consumed by the right set of users having the authorization i.e apiKey & secrets to authenticate the function.
+
+
 
 ### Prerequisite:
 
 IBM Cloud Account - [IBM Cloud Registration](https://cloud.ibm.com/registration)
 
-Quick read on -
-Functions / FaaS - [Functions](https://medium.com/@BoweiHan/an-introduction-to-serverless-and-faas-functions-as-a-service-fb5cec0417b2)
+Quick read -
+
+IBM Functions - [Functions](https://cloud.ibm.com/docs/openwhisk)
+
+Concept [Functions Concept](https://cloud.ibm.com/functions/learn/concepts)
 
 API Management - [API Management](https://developer.ibm.com/apiconnect/2019/01/10/what-is-api-management/)
 
@@ -233,7 +240,15 @@ You should see an output as below
 }
 ```
 
-4. Now lets go to our [API Management Service](https://cloud.ibm.com/functions/apimanagement) and create an API & its gateway to access our image classification function.
+4. Creating API Gateways service.
+
+Go to API Gateways service page on IBM Cloud and `Create` a service.
+
+[API Gateway Service](https://cloud.ibm.com/catalog/services/api-gateway)
+
+Note: This service is available in Lite plan only.
+
+5. Now lets go to our [API Management Service](https://cloud.ibm.com/functions/apimanagement) and create an API & its gateway to access our image classification function.
 
 Click on `Create API`
 
