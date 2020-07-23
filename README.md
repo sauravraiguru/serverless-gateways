@@ -177,7 +177,7 @@ You would need approximately 30 mins to complete the steps in this tutorial.
 
 ### Architecture:
 
-[IMAGE]
+![Flow Diagram](images/apifunctiondiagram.PNG)
 
 1. Create a new python hello world runtime say, with a name `classify` and replace the code with below
 
