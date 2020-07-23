@@ -151,6 +151,27 @@ function main(msg) {
 # PART B - Image classification using Functions
 
 ## 1. Classifying images from a function using Watson Visual Recognition
+
+### Objective 
+In this tutorial, we will be using IBM creating a function i.e action to classify images using visual recognition service and expose, secure it by using API gateway service.
+
+### Prerequisite:
+
+IBM Cloud Account - [IBM Cloud Registration](https://cloud.ibm.com/registration)
+
+Quick read on -
+Functions / FaaS - [Functions](https://medium.com/@BoweiHan/an-introduction-to-serverless-and-faas-functions-as-a-service-fb5cec0417b2)
+
+API Management - [API Management](https://developer.ibm.com/apiconnect/2019/01/10/what-is-api-management/)
+
+### Estimated Time:
+
+You would need approximately 30 mins to complete the steps in this tutorial.
+
+### Architecture:
+
+[IMAGE]
+
 1. Create a new python hello world runtime say, with a name `classify` and replace the code with below
 
 ```console
