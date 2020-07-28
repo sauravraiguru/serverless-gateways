@@ -150,7 +150,7 @@ function main(msg) {
 ```
 # PART B - Image classification using Functions
 
-## 1. Classifying images from a function using Watson Visual Recognition
+## 1. Create & securely expose a serverless function to classify images using Watson Visual Recognition & IBM API Gateways
 
 ### Objective
 In this tutorial, we will be using IBM Functions (which is a serverless offering on IBM Cloud based on OpenWhisk) to create an action to classify images using IBM Visual Recognition service and expose, secure the function by leveraging API Gateway service.
