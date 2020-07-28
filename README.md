@@ -91,7 +91,7 @@ Provide a `Path` say `hello`, select the action `hello-world` you created earlie
 #### Securing the API Endpoint
 Once we have now created an API GET /hello we need to now secure it.
 
-- Toggle the `Require authentication via API Key`
+- Enable (toggle to right) the `Require authentication via API Key`
 
 
 ![enablekey](images/enablekey.png)
@@ -102,7 +102,7 @@ Wherein, we can see the API link, status etc.
 ![Sharing](images/sharing.png)
 
 - Paste this label `X-IBM-Client-Id` and `Create` a Key
-Note: Keep a note of the `generated` Client ID Key.
+Note: Make a note of the `generated` Client ID Key.
 
 ![Create Key](images/create-key.png)
 
