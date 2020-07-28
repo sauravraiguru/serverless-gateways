@@ -179,7 +179,11 @@ You would need approximately 30 mins to complete the steps in this tutorial.
 
 ![Flow Diagram](images/apifunctiondiagram.png)
 
-1. Create a new python hello world runtime say, with a name `classify` and replace the code with below
+1. Open [IBM Functions](https://cloud.ibm.com/functions/) & click on `Actions` to create a new sample python action with the name `classify`.
+
+![API Key parameter](images/sample-action.png)
+
+Once created, replace the sample `existing code` with below code for recognizing images.
 
 ```console
 
@@ -207,12 +211,16 @@ def main(params):
     return result
 ```
 
-2.  Create a Visual Recognition service from here - [Visual Recognition Service](https://cloud.ibm.com/catalog/services/visual-recognition)
+2.  Create a Visual Recognition service from here - [Visual Recognition Service](https://cloud.ibm.com/catalog/services/visual-recognition) and Click on `Create`.
+
+![VR Create](images/vr-create.png)
 
 Once created you can go to `service credentials` section and make a note of the `apiKey`, which will be used to call the VR service.
 
+![VR Create](images/vr-creds.png)
 
-3. This action expects the `apiKey` to be passed in as a parameter, and lets do it.
+
+3. Next steps expects the `apiKey` to be passed in as a parameter, and lets do it.
 
 
 `Default parameters` can be set for an action, rather than passing the parameters into the action every time.
@@ -223,8 +231,7 @@ For parameter name, `apiKey`, with a capital K. For parameter value, insert your
 
 ![API Key parameter](images/parameter.png)
 
-
-P.S the `apiKey` value can be obtained from Visual Recognition service.
+Note:  the `apiKey` value can be obtained from Visual Recognition service.
 
 Note: Just for this test run add another parameter in the `Invoke with Parameters` and insert the below JSON parameter.
 
@@ -246,13 +253,18 @@ Go to API Gateways service page on IBM Cloud and `Create` a service.
 
 [API Gateway Service](https://cloud.ibm.com/catalog/services/api-gateway)
 
+![Trigger Config](images/apigw-create.png)
+
+
 Note: This service is available in Lite plan only.
 
-5. Now lets go to our [API Management Service](https://cloud.ibm.com/functions/apimanagement) and create an API & its gateway to access our image classification function.
+5. Now lets go to our [API Management](https://cloud.ibm.com/functions/apimanagement) and create an API & its gateway to access our image classification function.
 
 Click on `Create API`
 
-- Enter `API Name` say, `classify` and Click on `Create Operation`.
+![Trigger Config](images/apimanagement.png)
+
+- Enter `API Name` say, `classify` and click on `Create Operation`.
 
 ![Trigger Config](images/api-info.png)
 
@@ -289,8 +301,8 @@ Note: This is the swagger which is provided for testing your API.
 
 ![Try It](images/post-classify.png)
 
-- Paste the `X-IBM-Client-Id` Key value which was noted earlier
-- Also, paste imageUrl in the body parameter
+- Paste the `X-IBM-Client-Id` key's value which was noted earlier.
+- Also, paste `imageUrl` value in the body parameter
 ```console
 {
     "imageUrl":"https://raw.githubusercontent.com/beemarie/ow-vr/master/images/puppy.jpg"    
