@@ -183,7 +183,7 @@ You would need approximately 30 mins to complete the steps in this tutorial.
 
 ![API Key parameter](images/sample-action.png)
 
-Once created, replace the sample `existing code` with below code for recognizing images.
+Once the `classify` action is created, replace the default "hello world" function with the code from below for recognizing images and click "Save".
 
 ```console
 
@@ -215,7 +215,7 @@ def main(params):
 
 ![VR Create](images/vr-create.png)
 
-Once created you can go to `service credentials` section and make a note of the `apiKey`, which will be used to call the VR service.
+Once created, select `service credentials` from the left menu, expand the `Auto-generated service credentials` and make a note of its `apiKey` value, which will be used in the next step to call the VR service from our `classify` action.
 
 ![VR Create](images/vr-creds.png)
 
@@ -224,30 +224,47 @@ Once created you can go to `service credentials` section and make a note of the 
 
 
 `Default parameters` can be set for an action, rather than passing the parameters into the action every time.
-This is a useful option for data that stays the same on every invocation. Let’s set the apiKey as one of our default parameters.
+This is a useful option for data that stays the same on every invocation. Let’s set the `apiKey` as one of our default parameters.
 
 Click `Parameters` in the left side menu, and then click `Add Parameter +`
-For parameter name, `apiKey`, with a capital K. For parameter value, insert your apiKey value enclosed in quotation marks. Click `Save`.
+For parameter name, `apiKey`, with a capital K. For parameter value, insert your apiKey value (noted in previous step) enclosed in quotation marks. Click `Save`.
 
 ![API Key parameter](images/parameter.png)
 
-Note:  the `apiKey` value can be obtained from Visual Recognition service.
+Note: apiKey value is a bound parameter which cannot be deleted once bound. If saved with an incorrect value, you will need to delete the action and start again at the previous step.
 
-Note: Just for this test run add another parameter in the `Invoke with Parameters` and insert the below JSON parameter.
+4. Testing the `Classify` action.
+
+- We are now going to test the `classify` action by clicking `Invoke with parameters`
+- add below JSON to the `Change Action Input` dialog, press `Apply` to save the parameter.
 
 ```console
 {
     "imageUrl":"https://raw.githubusercontent.com/beemarie/ow-vr/master/images/puppy.jpg"    
 }
 ```
-You should see an output as below
+
+- and then click on `Invoke` the action.
+
+![Trigger Config](images/invoke_vr.png)
+
+We are using the Watson Visual Recognition service to identify & classify the image by passing an `imageUrl` along with the `apiKey` of the VR service as authentication.
+Watson service is going to analyze the public image and return (sample output below) the classification information of the image.
+
+
+After clicking `Invoke` watch the `Activations` window (on the right) and once the Watson service completes its analysis you should see a sample output as below.
+
+![Trigger Config](images/activations.png)
+
 ```console
 {
   "classes": "puppy, dog, domestic animal, animal, Labrador retriever dog, retriever dog, golden retriever dog, pale yellow color, light brown color, "
 }
 ```
 
-4. Creating API Gateways service.
+
+
+5. Creating API Gateways service.
 
 Go to API Gateways service page on IBM Cloud and `Create` a service.
 
@@ -258,7 +275,7 @@ Go to API Gateways service page on IBM Cloud and `Create` a service.
 
 Note: This service is available in Lite plan only.
 
-5. Now lets go to our [API Management](https://cloud.ibm.com/functions/apimanagement) and create an API & its gateway to access our image classification function.
+6. Now lets go to our [API Management](https://cloud.ibm.com/functions/apimanagement) and create an API & its gateway to access our image classification function.
 
 Click on `Create API`
 
@@ -269,39 +286,43 @@ Click on `Create API`
 ![Trigger Config](images/api-info.png)
 
 - Provide a `Path` say `post-classify`,
-select the action `Classify`-> `POST` you created earlier and Click on `Create`
+- Select the verb `POST` from the drop-down
+- choose the action `Classify` created earlier in Functions
+- and Click on `Create`
 
 ![Trigger Config](images/api-operation.png)
 
 ####   Securing the API Endpoint
-Once we have now created an API GET /hello we need to now secure it.
+Once we have now created an API `classify` we need to now secure it.
 
-- Toggle the `Require authentication via API Key`
+- Toggle / Enable (to right) the `Require authentication via API Key`
 
 
 ![enablekey](images/enablekey.png)
 - Scroll down and click on `Save`. It will take you to `Summary` page of the API.
-Wherein, we can see the API link, status etc.
+Wherein, we can see the API endpoint link, status (online / offline) & other information
 
-- Go to `Sharing & Keys` on the left and Click on `Create API Key`
+- Go to `Sharing & Keys` on the left and click on `Create API Key`
 
 ![Sharing](images/sharing.png)
 
-- Paste this label `X-IBM-Client-Id` and `Create` a Key
+- Paste the label `X-IBM-Client-Id` and click on `Create` to generate a API key
 
-Note: Keep a note of the `generated` Client ID Key.
+Note: make a note of the `generated key value` of the Client ID Key.
 
 ![Create Key](images/create-key.png)
 
-Now lets try using the `POST /classify` API with the Client ID Key
+Now lets try using the `POST /post-classify` API with the Client ID Key
 
-- Go to `API Explorer` and click on `POST /classify` and `Try it`
+- Go to `API Explorer`
+- click on `POST /post-classify`
+- and click on `Try it` tab
 
 Note: This is the swagger which is provided for testing your API.
 
 ![Try It](images/post-classify.png)
 
-- Paste the `X-IBM-Client-Id` key's value which was noted earlier.
+- Paste the `X-IBM-Client-Id` generated key's value which was noted above.
 - Also, paste `imageUrl` value in the body parameter
 ```console
 {
@@ -310,7 +331,7 @@ Note: This is the swagger which is provided for testing your API.
 ```
 - Click on `Send`.
 
-- You should see a sample response having the image classification below.
+You should see a sample API response having the image classification below, which was received upon invoking an API call by passing a secure client ID & imageUrl.
 
 ![Response](images/classify-response.png)
 
